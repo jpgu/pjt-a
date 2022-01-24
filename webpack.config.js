@@ -8,13 +8,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        main: './app.js',
+        main: './src/app.js',
     },
     output: {
         path: path.resolve('./dist'),
         filename: '[name].js',
     },
-    module: {
+    module: {        
         rules: [
             {
                 test: /\.css$/,
@@ -29,18 +29,18 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'url-loader',
                 options: {
-                    publicPath: './dist/',
+                    publicPath: './',
                     name: '[name].[ext]?[hash]',
                     limit: 20000,  // 20 kB
                 }
-            },
+            },           
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/                
+                exclude: /node_modules/
             }
         ]
-    },
+    },    
     plugins: [
         new webpack.BannerPlugin({
             banner: `
